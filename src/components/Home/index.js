@@ -117,7 +117,7 @@ class Home extends Component {
           <h1 className="d-flex justify-content-center">Chart 3K</h1>
           <div className="p-5 d-flex justify-content-center ">
             <Row>
-              <Col md={6} className="border">
+              <Col md={6} >
                 <SelectComponent
                   name={university.name}
                   data={university.data}
