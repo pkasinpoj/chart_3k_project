@@ -5,11 +5,13 @@ import ChartComponent from "../../src/components/Chart";
 import Layout from "../../src/components/Layout";
 import Axios from "axios";
 import { API } from "../../src/config/api";
+import LoaderComponent from "../../src/components/Loader";
 
 class Chart extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: false,
       data: {
         name: "",
         key: [],
@@ -17,7 +19,15 @@ class Chart extends Component {
       },
     };
   }
+
+  Loader = (status) => {
+    this.setState({
+      isLoading: status,
+    });
+  };
   componentWillReceiveProps(nextProps) {
+    this.Loader(true);
+
     let { query } = nextProps.router;
     let name = "";
     switch (query.id) {
@@ -56,6 +66,7 @@ class Chart extends Component {
             amounts: res.data.amounts,
           },
         });
+        this.Loader(false);
       })
       .catch((err) => {
         console.log(err);
@@ -63,19 +74,24 @@ class Chart extends Component {
   }
 
   render() {
-    let { data } = this.state;
+    let { data, isLoading } = this.state;
 
     return (
-      <dev className="container">
-        <Layout>
-          <Link href="/">
-            <button type="button" class="btn btn-outline-primary ml-2 mr-2 mb-5">
-              back to Home
-            </button>
-          </Link>
-          <ChartComponent data={data} />
-        </Layout>
-      </dev>
+      <Layout>
+        <Link href="/">
+          <button type="button" class="btn btn-primary ml-2 mr-2 mb-5">
+            back to Home
+          </button>
+        </Link>
+        <ChartComponent data={data} />
+        {isLoading ? (
+          <div className="bg bg-color bg-loader">
+            <LoaderComponent />
+          </div>
+        ) : (
+          ""
+        )}
+      </Layout>
     );
   }
 }

@@ -38,6 +38,9 @@ class SelectComponent extends Component {
                   </option>
                 );
               })}
+              <option name="year" value={2563}>
+                    {2563}
+                  </option>
             </Input>
           </FormGroup>
         </Form>

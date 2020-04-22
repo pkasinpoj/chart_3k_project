@@ -3,11 +3,13 @@ import Link from "next/link";
 import { API } from "../../config/api";
 import Axios from "axios";
 import SelectComponent from "./Select";
-import { Row, Col } from "reactstrap";
+import { Row, Col, Label } from "reactstrap";
+import LoaderComponent from "../Loader";
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: false,
       university: {
         name: "university_name",
         data: [],
@@ -27,22 +29,27 @@ class Home extends Component {
       body: {},
       charts: [
         {
+          label: "[university_name, year]",
           pathName: "checkfaculty-university",
           name: "Check Faculty University",
         },
         {
+          label: "[university_name]",
           pathName: "checkAllyearInUniversity",
           name: "Check All year In University",
         },
         {
+          label: "[year, faculty]",
           pathName: "checkfaculty-year",
           name: "Check Faculty year",
         },
         {
+          label: "[]",
           pathName: "checkAllAmount-AllUniversity",
           name: "Check All Amount - All University",
         },
         {
+          label: "[year]",
           pathName: "checkEndAmount-Year",
           name: "Check End Amount - Year",
         },
@@ -50,7 +57,14 @@ class Home extends Component {
     };
   }
 
+  Loader = (status) => {
+    this.setState({
+      isLoading: status,
+    });
+  };
+
   componentDidMount() {
+    this.Loader(true);
     let data = Axios.get(API.HOME)
       .then((res) => {
         this.setState({
@@ -77,6 +91,7 @@ class Home extends Component {
             endyear: res.data.endyear[0],
           },
         });
+        this.Loader(false);
       })
       .catch((err) => {
         console.log(err);
@@ -94,13 +109,15 @@ class Home extends Component {
 
   render() {
     let { university, faculty, years, endYear, body, charts } = this.state;
-    return (
+    return this.state.isLoading ? (
+      <LoaderComponent />
+    ) : (
       <div>
         <dev className="justify-content-center">
           <h1 className="d-flex justify-content-center">Chart 3K</h1>
           <div className="p-5 d-flex justify-content-center ">
             <Row>
-              <Col md={6}>
+              <Col md={6} className="border">
                 <SelectComponent
                   name={university.name}
                   data={university.data}
@@ -108,6 +125,7 @@ class Home extends Component {
                   className="ml-2 mr-2"
                 />
               </Col>
+
               <Col md={6}>
                 <SelectComponent
                   name={faculty.name}
@@ -131,13 +149,15 @@ class Home extends Component {
           </div>
 
           <div className="p-5 d-flex justify-content-center">
-          
             {charts.map((value, index) => {
               return (
                 <Link href={{ pathname: `/chart/${value.pathName}`, query: body }}>
-                  <button type="button" className="btn btn-primary ml-2 mr-2">
-                    {value.name}
-                  </button>
+                  <div className="d-flex flex-column text-center">
+                    <Label for={value.pathName}>{value.label}</Label>
+                    <button id={value.pathName} type="button" className="btn btn-primary ml-2 mr-2">
+                      {value.name}
+                    </button>
+                  </div>
                 </Link>
               );
             })}

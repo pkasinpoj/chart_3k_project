@@ -17,7 +17,7 @@ class ChartComponent extends Component {
         labels: key,
         datasets: [
           {
-            label: `# of Votes`,
+            label: `# of amounts`,
             data: amounts,
             backgroundColor: color,
             borderColor: border,
