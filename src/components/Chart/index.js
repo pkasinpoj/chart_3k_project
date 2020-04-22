@@ -45,7 +45,6 @@ class ChartComponent extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    console.log("\n== nextProps ==\n", nextProps);
     let color = [];
     let border = [];
     let text = "rgba(54, 162, 235, 1)";

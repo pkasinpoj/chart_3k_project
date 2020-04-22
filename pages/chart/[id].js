@@ -19,7 +19,6 @@ class Chart extends Component {
   }
   componentWillReceiveProps(nextProps) {
     let { query } = nextProps.router;
-    console.log("\n== query ==\n", query);
     let name = "";
     switch (query.id) {
       case "checkfaculty-university": {
@@ -47,7 +46,7 @@ class Chart extends Component {
     }
     let data = Axios.post(`${API.DOMAIN}/${query.id}`, query)
       .then((res) => {
-        console.log("\n== res ==\n", res);
+        // console.log("\n== res ==\n", res);
 
         this.setState({
           data: {

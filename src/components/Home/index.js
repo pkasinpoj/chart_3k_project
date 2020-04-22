@@ -94,7 +94,6 @@ class Home extends Component {
 
   render() {
     let { university, faculty, years, endYear, body, charts } = this.state;
-    console.log("body==", body);
     return (
       <div>
         <dev className="justify-content-center">
