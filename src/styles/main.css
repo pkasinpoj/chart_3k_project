@@ -29,3 +29,8 @@ html {
 .border{
   border: solid 1px black;
 }
+
+.img-size{
+  width: 15%;
+  height: auto;
+}

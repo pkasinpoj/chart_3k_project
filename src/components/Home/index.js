@@ -5,6 +5,9 @@ import Axios from "axios";
 import SelectComponent from "./Select";
 import { Row, Col, Label } from "reactstrap";
 import LoaderComponent from "../Loader";
+// import kmitl from "../../../public/static/images/kmitl.png"
+// import kmutnb from "/images/kmutnb.png";
+// import kmutt from "/images/kmutt.png";
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -117,7 +120,7 @@ class Home extends Component {
           <h1 className="d-flex justify-content-center">Chart 3K</h1>
           <div className="p-5 justify-content-center ">
             <Row className="border">
-              <Col md={4} >
+              <Col md={4}>
                 <SelectComponent
                   name={university.name}
                   data={university.data}
@@ -210,20 +213,11 @@ class Home extends Component {
             {/* //////////////5555555 */}
           </div>
 
-          {/* <div className="p-5 d-flex justify-content-center">
-            {charts.map((value, index) => {
-              return (
-                <Link href={{ pathname: `/chart/${value.pathName}`, query: body }}>
-                  <div className="d-flex flex-column text-center">
-                    <Label for={value.pathName}>{value.label}</Label>
-                    <button id={value.pathName} type="button" className="btn btn-primary ml-2 mr-2">
-                      {value.name}
-                    </button>
-                  </div>
-                </Link>
-              );
-            })}
-          </div> */}
+          <div className="p-5 d-flex justify-content-center">
+            <img src="/images/kmitl.png" alt="kmitl" className="img-size m-auto" />
+            <img src="/images/kmutnb.png" alt="kmutnb" className="img-size m-auto"/>
+            <img src="/images/kmutnb.png" alt="kmutt" className="img-size m-auto"/>
+          </div>
         </dev>
       </div>
     );
