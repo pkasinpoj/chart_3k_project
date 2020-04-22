@@ -49,7 +49,7 @@ class Home extends Component {
           name: "Check All Amount - All University",
         },
         {
-          label: "[year]",
+          label: "[endyear]",
           pathName: "checkEndAmount-Year",
           name: "Check End Amount - Year",
         },
@@ -115,9 +115,9 @@ class Home extends Component {
       <div>
         <dev className="justify-content-center">
           <h1 className="d-flex justify-content-center">Chart 3K</h1>
-          <div className="p-5 d-flex justify-content-center ">
-            <Row>
-              <Col md={6} >
+          <div className="p-5 justify-content-center ">
+            <Row className="border">
+              <Col md={4} >
                 <SelectComponent
                   name={university.name}
                   data={university.data}
@@ -125,8 +125,42 @@ class Home extends Component {
                   className="ml-2 mr-2"
                 />
               </Col>
-
-              <Col md={6}>
+              <Col md={4}>
+                <SelectComponent name={years.name} data={years.data} onSelect={this._onSelect} className="ml-2 mr-2" />
+              </Col>
+              <Col md={4} className=" m-auto pt-4 pb-4">
+                <Link href={{ pathname: `/chart/checkfaculty-university`, query: body }}>
+                  <button id="checkfaculty-university" type="button" className="btn btn-primary ml-2 mr-2">
+                    Check Faculty University
+                  </button>
+                </Link>
+              </Col>
+            </Row>
+            {/* //////////////1111111 */}
+            <Row className="border">
+              <Col md={4}></Col>
+              <Col md={4}>
+                <SelectComponent
+                  name={university.name}
+                  data={university.data}
+                  onSelect={this._onSelect}
+                  className="ml-2 mr-2"
+                />
+              </Col>
+              <Col md={4} className=" m-auto pt-4 pb-4">
+                <Link href={{ pathname: `/chart/checkAllyearInUniversity`, query: body }}>
+                  <button id="checkAllyearInUniversity" type="button" className="btn btn-primary ml-2 mr-2">
+                    Check All year In University
+                  </button>
+                </Link>
+              </Col>
+            </Row>
+            {/* //////////////222222 */}
+            <Row className="border">
+              <Col md={4}>
+                <SelectComponent name={years.name} data={years.data} onSelect={this._onSelect} className="ml-2 mr-2" />
+              </Col>
+              <Col md={4}>
                 <SelectComponent
                   name={faculty.name}
                   data={faculty.data}
@@ -134,10 +168,30 @@ class Home extends Component {
                   className="ml-2 mr-2"
                 />
               </Col>
-              <Col md={6}>
-                <SelectComponent name={years.name} data={years.data} onSelect={this._onSelect} className="ml-2 mr-2" />
+              <Col md={4} className=" m-auto pt-4 pb-4">
+                <Link href={{ pathname: `/chart/checkfaculty-year`, query: body }}>
+                  <button id="checkfaculty-year" type="button" className="btn btn-primary ml-2 mr-2">
+                    Check Faculty year
+                  </button>
+                </Link>
               </Col>
-              <Col md={6}>
+            </Row>
+            {/* //////////////333333 */}
+            <Row className="border">
+              <Col md={4}></Col>
+              <Col md={4}></Col>
+              <Col md={4} className=" m-auto pt-4 pb-4">
+                <Link href={{ pathname: `/chart/checkAllAmount-AllUniversity`, query: body }}>
+                  <button id="checkAllAmount-AllUniversity" type="button" className="btn btn-primary ml-2 mr-2">
+                    Check All Amount - All University
+                  </button>
+                </Link>
+              </Col>
+            </Row>
+            {/* //////////////4444444 */}
+            <Row className="border">
+              <Col md={4}></Col>
+              <Col md={4}>
                 <SelectComponent
                   name={endYear.name}
                   data={endYear.data}
@@ -145,10 +199,18 @@ class Home extends Component {
                   className="ml-2 mr-2"
                 />
               </Col>
+              <Col md={4} className=" m-auto pt-4 pb-4">
+                <Link href={{ pathname: `/chart/checkEndAmount-Year`, query: body }}>
+                  <button id="checkEndAmount-Year" type="button" className="btn btn-primary ml-2 mr-2">
+                    Check End Amount - Year
+                  </button>
+                </Link>
+              </Col>
             </Row>
+            {/* //////////////5555555 */}
           </div>
 
-          <div className="p-5 d-flex justify-content-center">
+          {/* <div className="p-5 d-flex justify-content-center">
             {charts.map((value, index) => {
               return (
                 <Link href={{ pathname: `/chart/${value.pathName}`, query: body }}>
@@ -161,7 +223,7 @@ class Home extends Component {
                 </Link>
               );
             })}
-          </div>
+          </div> */}
         </dev>
       </div>
     );
