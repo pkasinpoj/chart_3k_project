@@ -69,7 +69,8 @@ class Chart extends Component {
         this.Loader(false);
       })
       .catch((err) => {
-        console.log(err);
+        console.log( err );
+        this.Loader(false);
       });
   }
 
