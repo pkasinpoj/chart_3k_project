@@ -9,6 +9,7 @@ export const API = {
   COMPANY: domain + v1 + "check-faculty-company",
   COMPANY_MOST: domain + v1 + "/check-most-faculty-company",
   COMPANY_LOW: domain + v1 + "/check-lowest-faculty-company",
+  FACULTY_GRADUATE: domain + v1 + "/check-faculty-graduate",
   CHECK_FACULTY_UNIVERSITY: domain + v1 + "/checkfaculty-university",
   CHECK_ALL_YEAR: domain + v1 + "/checkAllyearInUniversity",
   CHECK_FACULTY_YEAR: domain + v1 + "/checkfaculty-year",

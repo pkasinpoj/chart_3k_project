@@ -83,6 +83,12 @@ class Company extends Component {
           },
           mostFaculty: res.data.mostFaculty,
           predictFaculty: res.data.predictFaculty,
+        } );
+        console.log(res.data)
+        Axios.post(`${API.FACULTY_GRADUATE}`, { faculty: res.data.faculty[0] }).then((res) => {
+          this.setState({
+            percentJob: res.data.result,
+          });
         });
         this.Loader(false);
       })
@@ -101,16 +107,15 @@ class Company extends Component {
     });
   };
   _onSelectFaculty = (e) => {
-    Axios.post(`${API.DOMAIN}/${query.id}`, { faculty: e.target.value }).then((res) => {});
-    this.setState({
-      percentJob: e.target.value,
+    Axios.post(`${API.FACULTY_GRADUATE}`, { faculty: e.target.value }).then((res) => {
+      this.setState({
+        percentJob: res.data.result,
+      });
     });
   };
 
   render() {
     let { faculty, years, mostFaculty, predictFaculty, body, percentJob } = this.state;
-    console.log(faculty);
-    console.log(mostFaculty);
     return this.state.isLoading ? (
       <LoaderComponent />
     ) : (
