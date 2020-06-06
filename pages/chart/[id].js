@@ -27,7 +27,6 @@ class Chart extends Component {
   };
   componentWillReceiveProps(nextProps) {
     this.Loader(true);
-
     let { query } = nextProps.router;
     let name = "";
     switch (query.id) {
@@ -48,6 +47,18 @@ class Chart extends Component {
         break;
       }
       case "checkEndAmount-Year": {
+        name = "facultys";
+        break;
+      }
+      case "check-most-faculty-company": {
+        name = "facultys";
+        break;
+      }
+      case "check-lowest-faculty-company": {
+        name = "facultys";
+        break;
+      }
+      case "check-faculty-company": {
         name = "facultys";
         break;
       }

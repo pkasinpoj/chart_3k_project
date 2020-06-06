@@ -26,11 +26,28 @@ html {
   left: 0px;
 }
 
-.border{
+.border {
   border: solid 1px black;
 }
 
-.img-size{
+.img-size {
   width: 15%;
   height: auto;
+}
+
+.hidden-input {
+  visibility: hidden;
+}
+
+.upload-border {
+  border: dashed 1px rgb(95, 92, 92);
+  margin: auto;
+  width: 200px;
+  height: 200px;
+}
+
+.upload-plus {
+  color: rgb(95, 92, 92);
+  font-size: 100px;
+  text-align: center;
 }

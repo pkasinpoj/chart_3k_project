@@ -2,7 +2,7 @@ import { Component } from "react";
 import Link from "next/link";
 import { API } from "../../config/api";
 import Axios from "axios";
-import SelectComponent from "./Select";
+import SelectComponent from "../Select";
 import { Row, Col, Label } from "reactstrap";
 import LoaderComponent from "../Loader";
 // import kmitl from "../../../public/static/images/kmitl.png"

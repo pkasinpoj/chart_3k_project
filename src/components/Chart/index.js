@@ -48,6 +48,7 @@ class ChartComponent extends Component {
     let color = [];
     let border = [];
     let text = "rgba(54, 162, 235, 1)";
+    console.log(nextProps.data)
     let max = nextProps.data.key.length;
     for (let i = 0; i < max; i++) {
       let ran = this.getRandomInt(max);
